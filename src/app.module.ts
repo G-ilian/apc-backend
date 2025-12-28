@@ -7,6 +7,9 @@ import {
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { PartnersModule } from './partners/partners.module';
+import { TransactionsModule } from './transactions/transactions.module';
+import { ProductsModule } from './products/products.module';
 
 @Module({
   imports: [
@@ -28,6 +31,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         synchronize: true,
       }),
     }),
+    PartnersModule,
+    TransactionsModule,
+    ProductsModule,
   ],
   controllers: [AppController],
   providers: [],
