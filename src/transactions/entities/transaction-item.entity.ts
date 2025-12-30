@@ -1,11 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn } from 'typeorm';
 import { Transaction } from './transaction.entity';
-import { ProductType } from 'src/common';
-
-enum qualityStatus {
-    GOOD,
-    POOR
-}
+import { ProductType, QualityStatus } from 'src/common';
 
 @Entity('transactions_items')
 export class TransactionItem {
@@ -27,8 +22,8 @@ export class TransactionItem {
     @Column({ type: 'decimal', precision: 10, scale: 2 })
     total_price: number;
 
-    @Column({ type: 'enum', enum: qualityStatus })
-    quality: qualityStatus;
+    @Column({ type: 'enum', enum: QualityStatus })
+    quality: QualityStatus;
 
     @CreateDateColumn()
     created_at: Date;

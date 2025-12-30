@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from 'typeorm';
-import { ProductType, MeasurementUnit } from 'src/common/enums/product.enum';
+import { ProductType, MeasurementUnit, QualityStatus, ProductSubtype } from 'src/common/enums/product.enum';
+import { IsEnum } from 'class-validator';
 
 @Entity('product_prices')
 export class ProductPrice {
@@ -7,6 +8,7 @@ export class ProductPrice {
   id: string;
 
   @Column({ type: 'enum', enum: ProductType })
+  @IsEnum(ProductType)
   product: ProductType;
 
   @Column({ type: 'decimal', precision: 10, scale: 2 })
@@ -15,11 +17,17 @@ export class ProductPrice {
   @Column({ type: 'enum', enum: MeasurementUnit })
   unit: MeasurementUnit;
 
+  @Column({type: 'enum', enum: QualityStatus})
+  quality: QualityStatus;
+
+  @Column({type: 'enum', enum: ProductSubtype, default: ProductSubtype.NOT_APPLICABLE})
+  subtype: ProductSubtype;
+
   @Column({ type: 'date' })
   effective_from: Date;
 
   @Column({ type: 'date', nullable: true })
-  effective_until: Date;
+  effective_until: Date | null;
 
   @CreateDateColumn()
   created_at: Date;
