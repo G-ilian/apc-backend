@@ -112,7 +112,6 @@ export class ProductsService {
     }
 
     const translatedData = data.map(price => this.translateProductPrice(price));
-    this.logger.log(JSON.stringify(translatedData));
 
     return {
       data: translatedData,

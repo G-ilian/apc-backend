@@ -4,6 +4,7 @@ import { Transaction } from 'src/transactions/entities';
 export enum Cooperative {
   VAV = 'VAV',
   APRUCARE = 'APRUCARE',
+  OTHER = 'OTHER',
 }
 
 export enum PartnerRole {
@@ -21,6 +22,12 @@ export class Partner {
 
   @Column()
   full_name: string;
+
+  @Column({ nullable: true })
+  email: string;
+
+  @Column({ nullable: true })
+  phone: string;
 
   @Column({ type: 'enum', enum: PartnerRole, default: PartnerRole.MEMBER })
   role: PartnerRole;
