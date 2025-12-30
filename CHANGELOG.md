@@ -1,7 +1,7 @@
 ## [Unreleased]
 
 ### Adicionado
-    - N/A
+    - CRUD completo para preço dos produtos.
 ### Modificado
     - N/A
 ### Corrigido
